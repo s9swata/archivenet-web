@@ -31,9 +31,10 @@ AI Agent
    ├── ArchiveNet SDK
    │     ├── Write Memory ➝ Arweave TX
    │     ├── Retrieve Memory ⬅ Arweave Query
-   │     └── Index & Cache Layer (optional)
+   │     └── Index & Cache Layer
    │
    └── Plugins (Vector DB, Auth, etc.)
+```
 
 ## 📖 Getting Started
 
