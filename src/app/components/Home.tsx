@@ -2,13 +2,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LoadingScreen from '../utils/Loader';
+
 
 function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
     const imagesLoadedRef = useRef(0);
-    const [loaded, setLoaded] = useState(false);
+
 
     const frames = {
         currentIndex: 0,
@@ -55,7 +55,6 @@ function Home() {
                 if (imagesLoadedRef.current === frames.maxIndex) {
                     console.log('All images preloaded');
                     loadImage(frames.currentIndex);
-                    setLoaded(true);
                     startAnimation();
                 }
             };
@@ -122,7 +121,6 @@ function Home() {
         };
     }, []);
 
-    if (!loaded) return <LoadingScreen />
 
     return (
         <div className='w-full bg-zinc-900'>
