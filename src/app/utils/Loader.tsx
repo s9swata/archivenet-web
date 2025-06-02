@@ -1,34 +1,35 @@
 "use client";
 
-const LoadingScreen = ({ text = "LOADING..." }) => {
+const LoadingScreen = ({ progress = 0 }) => {
     return (
         <div className="fixed z-999 inset-0 flex flex-col items-center justify-center bg-black">
             <style jsx>{`
-        @keyframes grow {
-          0%,
-          100% {
-            transform: scaleX(0.05);
-          }
-          50% {
-            transform: scaleX(1);
-          }
-        }
-      `}</style>
+                @keyframes slide {
+                    0% {
+                        transform: translateX(-100%);
+                    }
+                    100% {
+                        transform: translateX(100%);
+                    }
+                }
+            `}</style>
+
             <div className="flex flex-col items-center gap-4">
-                {/* Horizontal Progress Bar */}
-                <div className="w-64 h-1 bg-[#1E1E1E] rounded-full overflow-hidden">
+                {/* Track */}
+                <div className="w-64 h-[0.1rem] rounded-full overflow-hidden relative">
+                    {/* Animated white bar */}
                     <div
-                        className="h-full w-full bg-white rounded-full origin-left animate-[grow_1.5s_ease-in-out_infinite]"
+                        className="absolute h-full w-1/4 bg-white rounded-full animate-[slide_1.5s_linear_infinite]"
                         style={{
-                            animation: "grow 3.5s ease-in-out infinite",
-                            transformOrigin: "left",
+                            transform: 'translateX(-100%)',
                         }}
                     />
                 </div>
-
+            </div>
+            <div className="absolute bottom-2 left-2">
                 {/* Loading text */}
-                <p className="text-lg font-medium text-[#f03b05] font-[mubold]">
-                    {text}
+                <p className="text-5xl text-white font-[neuePlackExtendedBlack]">
+                    {Math.floor(progress)}
                 </p>
             </div>
         </div>
