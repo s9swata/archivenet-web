@@ -4,7 +4,7 @@ const LoadingScreen = ({ progress = 0 }) => {
     return (
         <div className="fixed z-999 inset-0 flex flex-col items-center justify-center bg-black">
             <style jsx>{`
-                @keyframes slide {
+                @keyframes pingpong {
                     0% {
                         transform: translateX(-100%);
                     }
@@ -19,9 +19,9 @@ const LoadingScreen = ({ progress = 0 }) => {
                 <div className="w-64 h-[0.1rem] rounded-full overflow-hidden relative">
                     {/* Animated white bar */}
                     <div
-                        className="absolute h-full w-1/4 bg-white rounded-full animate-[slide_1.5s_linear_infinite]"
+                        className="absolute h-full w-1/4 bg-white rounded-full"
                         style={{
-                            transform: 'translateX(-100%)',
+                            animation: "pingpong 1.5s linear infinite alternate",
                         }}
                     />
                 </div>
