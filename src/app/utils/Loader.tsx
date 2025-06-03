@@ -15,9 +15,7 @@ const LoadingScreen = ({ progress = 0 }) => {
             `}</style>
 
             <div className="flex flex-col items-center gap-4">
-                {/* Track */}
                 <div className="w-64 h-[0.1rem] rounded-full overflow-hidden relative">
-                    {/* Animated white bar */}
                     <div
                         className="absolute h-full w-1/4 bg-white rounded-full"
                         style={{
@@ -27,7 +25,6 @@ const LoadingScreen = ({ progress = 0 }) => {
                 </div>
             </div>
             <div className="absolute bottom-2 left-2">
-                {/* Loading text */}
                 <p className="text-5xl text-white font-[neuePlackExtendedBlack]">
                     {Math.floor(progress)}
                 </p>

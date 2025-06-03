@@ -4,10 +4,12 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from '../utils/Navbar';
 import Lenis from 'lenis'
-import { models } from '../utils/constants';
+import { Models, Features } from '../utils/constants';
 import { useGSAP } from '@gsap/react';
 import LoadingScreen from '../utils/Loader';
-
+import Paragraph from '../utils/Character';
+import { AnimatedButton } from '../utils/AnimatedButton';
+import Pricing from '../utils/Pricing';
 
 function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,8 +17,6 @@ function Home() {
     const imagesLoadedRef = useRef(0);
     const [isLoading, setIsLoading] = useState(true);
     const [progress, setProgress] = useState(0);
-
-
 
     useEffect(() => {
         const lenis = new Lenis();
@@ -89,7 +89,7 @@ function Home() {
             ease: 'sine.inOut',
         })
 
-    });
+    }, [isLoading]);
 
     function startAnimation() {
         const canvas = canvasRef.current;
@@ -199,14 +199,12 @@ function Home() {
     useEffect(() => {
         preloadImages();
 
-        // Add resize listener inside useEffect to avoid multiple listeners
         const handleResize = () => {
             loadImage(Math.floor(frames.currentIndex));
         };
 
         window.addEventListener('resize', handleResize);
 
-        // Cleanup function
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
             window.removeEventListener('resize', handleResize);
@@ -226,7 +224,7 @@ function Home() {
     if (isLoading) return <LoadingScreen progress={progress} />;
 
     return (
-        <div className='w-full bg-zinc-900'>
+        <div className='w-full bg-black'>
             <div className='parent relative w-full h-[1000vh]'>
                 <div className='w-full h-screen sticky top-0 left-0'>
                     <canvas
@@ -243,24 +241,42 @@ function Home() {
                         <p className='text-white font-[mubold] text-sm md:text-lg'>+ SCROLL DOWN</p>
                     </div>
                     <div className='absolute z-2 top-30 left-30 rotate-20 claude first opacity-0'>
-                        <img src={models.claude.src} alt="Claude" className='w-20 h-20' />
+                        <img src={Models.claude.src} alt="Claude" className='w-20 h-20' />
                     </div>
                     <div className='absolute z-2 top-40 right-30 -rotate-20 openAI second opacity-0'>
-                        <img src={models.openAI.src} alt="OpenAI" className='w-20 h-20' />
+                        <img src={Models.openAI.src} alt="OpenAI" className='w-20 h-20' />
                     </div>
                     <div className='absolute z-2 top-20 left-170 grok third opacity-0'>
-                        <img src={models.grok.src} alt="Grok" className='w-20 h-20' />
+                        <img src={Models.grok.src} alt="Grok" className='w-20 h-20' />
                     </div>
                     <div className='absolute z-2 bottom-20 left-170 llama first opacity-0'>
-                        <img src={models.llama.src} alt="LLama" className='w-30 h-30' />
+                        <img src={Models.llama.src} alt="LLama" className='w-30 h-30' />
                     </div>
                     <div className='absolute z-2 bottom-30 right-30 rotate-20 gemini third opacity-0'>
-                        <img src={models.gemini.src} alt="Gemini" className='w-20 h-20' />
+                        <img src={Models.gemini.src} alt="Gemini" className='w-20 h-20' />
                     </div>
                     <div className='absolute z-2 bottom-40 left-40 -rotate-30 deepseek second opacity-0'>
-                        <img src={models.deepseek.src} alt="Deepseek" className='w-30 h-30' />
+                        <img src={Models.deepseek.src} alt="Deepseek" className='w-30 h-30' />
                     </div>
                 </div>
+            </div>
+            {/*How it Works Section*/}
+            <div className='w-full flex flex-col justify-center p-5 mt-20'>
+                <div className='flex flex-col justify-center gap-7 pt-10 px-30'>
+                    {Features.map((item, index) => (<ul key={index} className='text-[#dfdcff]'>
+                        <h1 className='text-5xl font-[neuePlackExtendedRegular]'>{item.title}</h1>
+                        <h2 className='text-2xl'>{item.description}</h2></ul>))}
+                </div>
+            </div>
+            <div className='w-full'>
+                <Paragraph value={"Take the first step towards secure, universal memory for agentic models, unlock shared context and scalable intelligence"} style={"w-full px-30 pt-20 text-7xl font-[neuePlackExtendedRegular] text-[#dfdcff] text-center"}>
+                </Paragraph>
+            </div>
+            <div className='w-full flex justify-center items-center my-10'>
+                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} />
+            </div>
+            <div>
+                <Pricing />
             </div>
         </div>
     )
