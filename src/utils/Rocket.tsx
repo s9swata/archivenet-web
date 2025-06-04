@@ -14,6 +14,11 @@ const Rocket = () => {
         return () => window.removeEventListener("mousemove", updatePosition);
     }, []);
 
+    useEffect(() => {
+        document.body.classList.add("custom-cursor-enabled");
+        return () => document.body.classList.remove("custom-cursor-enabled");
+    }, []);
+
     return (
         <Image
             src={rocket}

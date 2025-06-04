@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Rocket from "@/utils/Rocket";
 import { headers } from "next/headers";
 import ContextProvider from "@/context";
+import ClientWrapper from "@/utils/ClientWrapper";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,14 +28,14 @@ export default async function RootLayout({
 }>) {
   const getHeaders = await headers()
   const cookies = getHeaders.get("cookie");
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContextProvider cookies={cookies}>
-          <Rocket />
-          {children}
+          <ClientWrapper>{children}</ClientWrapper>
         </ContextProvider>
       </body>
     </html>

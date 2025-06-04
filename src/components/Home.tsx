@@ -10,6 +10,7 @@ import LoadingScreen from '../utils/Loader';
 import Paragraph from '../utils/Character';
 import { AnimatedButton } from '../utils/AnimatedButton';
 import Pricing from '../utils/Pricing';
+import { useRouter } from 'next/navigation';
 
 function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,6 +18,8 @@ function Home() {
     const imagesLoadedRef = useRef(0);
     const [isLoading, setIsLoading] = useState(true);
     const [progress, setProgress] = useState(0);
+
+    const router = useRouter();
 
     useEffect(() => {
         const lenis = new Lenis();
@@ -32,6 +35,7 @@ function Home() {
 
         return () => {
             gsap.ticker.remove(update);
+            lenis.destroy();
         };
     }, [])
 
@@ -280,7 +284,7 @@ function Home() {
                 </Paragraph>
             </div>
             <div className='w-full flex justify-center items-center my-10'>
-                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} onClick={() => console.log("button clicked!")} />
+                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} onClick={() => router.push("/dashboard")} />
             </div>
             <div>
                 <Pricing />

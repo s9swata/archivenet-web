@@ -31,7 +31,10 @@ body{
     background-color: #000;
 }
 
-html, body, *, *:hover, *:active, *:focus {
+body.custom-cursor-enabled,
+body.custom-cursor-enabled *:hover,
+body.custom-cursor-enabled *:active,
+body.custom-cursor-enabled *:focus {
   cursor: none !important;
 }
 
