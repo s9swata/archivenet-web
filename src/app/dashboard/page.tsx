@@ -4,9 +4,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { RedirectToSignIn, SignedOut, SignedIn, UserButton } from "@clerk/nextjs"
+import { useAuth } from '@clerk/nextjs';
+import { test } from '@/lib/api';
 
 const Dashboard = () => {
     const [selectedProject, setSelectedProject] = useState('main-protocol');
+    const { getToken } = useAuth();
+
+    const handleTest = async () => {
+        try {
+            const token = await getToken();
+            const response = await test(token as string);
+            console.log('API Response:', response);
+        }
+        catch (error) {
+            console.error('API Error:', error);
+        }
+    }
 
     // Mock data
     const projects = [
@@ -71,7 +85,7 @@ const Dashboard = () => {
                                 <Button variant="outline" size="sm" className="border-gray-600 text-black cursor-pointer hover:border-gray-400">
                                     Documentation
                                 </Button>
-                                <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                                <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={handleTest}>
                                     Create Project
                                 </Button>
                                 <UserButton />
@@ -84,7 +98,7 @@ const Dashboard = () => {
                         <div className="w-64 border-r border-gray-700 bg-zinc-900 min-h-screen">
                             <div className="p-4">
                                 <div className="space-y-2">
-                                    <Button variant="ghost" className="w-full justify-start text-blue-400 bg-blue-500/20 hover:bg-blue-500/30">
+                                    <Button variant="ghost" className="w-full justify-start text-blue-400 bg-blue-500/20 hover:bg-blue-500/30 hover:text-white">
                                         📊 Dashboard
                                     </Button>
                                     <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-white hover:bg-gray-700/50">
