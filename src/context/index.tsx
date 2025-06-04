@@ -25,7 +25,7 @@ const metadata = {
 }
 
 // Create the modal
-const modal = createAppKit({
+createAppKit({
     adapters: [wagmiAdapter],
     projectId,
     networks: [mainnet, arbitrum, avalanche, base, optimism, polygon],
@@ -35,6 +35,7 @@ const modal = createAppKit({
         analytics: true, // Optional - defaults to your Cloud configuration
     }
 })
+
 
 function ContextProvider({ children, cookies }: { children: ReactNode; cookies: string | null }) {
     const initialState = cookieToInitialState(wagmiAdapter.wagmiConfig as Config, cookies)
