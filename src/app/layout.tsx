@@ -4,6 +4,7 @@ import "./globals.css";
 import { headers } from "next/headers";
 import ContextProvider from "@/context";
 import ClientWrapper from "@/utils/ClientWrapper";
+import { ClerkProvider } from "@clerk/nextjs";
 
 
 const geistSans = Geist({
@@ -30,14 +31,16 @@ export default async function RootLayout({
   const cookies = getHeaders.get("cookie");
 
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ContextProvider cookies={cookies}>
-          <ClientWrapper>{children}</ClientWrapper>
-        </ContextProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ContextProvider cookies={cookies}>
+            <ClientWrapper>{children}</ClientWrapper>
+          </ContextProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
