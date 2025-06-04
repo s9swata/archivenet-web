@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logo from "../../../public/logo.png";
+import logo from "../../public/logo.png";
 import Image from "next/image";
 
 export const Navbar = () => {

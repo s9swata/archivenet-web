@@ -31,6 +31,11 @@ body{
     background-color: #000;
 }
 
+html, body, *, *:hover, *:active, *:focus {
+  cursor: none !important;
+}
+
+
 @property --border-angle {
   syntax: '<angle>';
   inherits: false;

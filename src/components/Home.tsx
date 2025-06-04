@@ -192,6 +192,13 @@ function Home() {
             context.imageSmoothingQuality = 'high';
             context.drawImage(image, offsetX, offsetY, newWidth, newHeight);
 
+            const opacityAmount = Math.min(1, index / frames.maxIndex);
+            const minOpacity = 0.6;
+            const finalOpacity = 1 - (1 - minOpacity) * opacityAmount; // Remap to [1 → 0.6]
+            canvas.style.opacity = finalOpacity.toFixed(2);
+
+            canvas.style.transition = "opacity 0.3s ease-out";
+
             frames.currentIndex = index;
         }
     }
@@ -269,11 +276,11 @@ function Home() {
                 </div>
             </div>
             <div className='w-full'>
-                <Paragraph value={"Take the first step towards secure, universal memory for agentic models, unlock shared context and scalable intelligence"} style={"w-full px-30 pt-20 text-7xl font-[neuePlackExtendedRegular] text-[#dfdcff] text-center"}>
+                <Paragraph value={"Take the first :smirk_cat: step towards secure :smile:, universal memory for agentic models :sunglasses: , unlock shared context and scalable :brain: intelligence"} style={"w-full px-30 pt-20 text-7xl font-[neuePlackExtendedRegular] text-[#dfdcff] text-center"}>
                 </Paragraph>
             </div>
             <div className='w-full flex justify-center items-center my-10'>
-                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} />
+                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} onClick={() => console.log("button clicked!")} />
             </div>
             <div>
                 <Pricing />
