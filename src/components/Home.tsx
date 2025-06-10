@@ -284,7 +284,7 @@ function Home() {
                 </Paragraph>
             </div>
             <div className='w-full flex justify-center items-center my-10'>
-                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} onClick={() => router.push("/dashboard")} />
+                <AnimatedButton styles={{ backgroundColor: '#dfdcff' }} onClick={() => router.push("/get-started")} />
             </div>
             <div>
                 <Pricing />

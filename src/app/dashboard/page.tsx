@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { RedirectToSignIn, SignedOut, SignedIn, UserButton } from "@clerk/nextjs"
+import { RedirectToSignIn, SignedOut, SignedIn } from "@clerk/nextjs"
 import { useAuth } from '@clerk/nextjs';
 import { test } from '@/lib/api';
+import AppBar from '@/utils/Appbar';
 
 const Dashboard = () => {
     const [selectedProject, setSelectedProject] = useState('main-protocol');
@@ -72,27 +73,8 @@ const Dashboard = () => {
         <>
             <SignedIn>
                 <div className="min-h-screen bg-black text-white">
-                    {/* Header */}
-                    <div className="border-b border-gray-700 bg-zinc-900">
-                        <div className="flex h-16 items-center justify-between px-6">
-                            <div className="flex items-center space-x-4">
-                                <h1 className="text-xl font-[neuePlackExtendedBold] text-white">ArchiveNet</h1>
-                                <Badge variant="outline" className="text-green-400 border-green-500 bg-green-500/10">
-                                    Protocol Active
-                                </Badge>
-                            </div>
-                            <div className="flex items-center space-x-4">
-                                <Button variant="outline" size="sm" className="border-gray-600 text-black cursor-pointer hover:border-gray-400">
-                                    Documentation
-                                </Button>
-                                <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={handleTest}>
-                                    Create Project
-                                </Button>
-                                <UserButton />
-                            </div>
-                        </div>
-                    </div>
-
+                    <AppBar />
+                    {/* Main Layout */}
                     <div className="flex">
                         {/* Sidebar */}
                         <div className="w-64 border-r border-gray-700 bg-zinc-900 min-h-screen">

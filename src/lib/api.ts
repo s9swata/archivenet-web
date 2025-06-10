@@ -10,3 +10,16 @@ export async function test(token: string) {
   });
   return response.data;
 }
+
+export async function getApiKey(token: string, name: string, description: string) {
+  const response = await axios.post(`${API_BASE_URL}/apiKey/create`,{
+    name,
+    description,
+    contract_tx_id: ""
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+}
