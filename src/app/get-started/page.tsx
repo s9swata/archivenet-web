@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 //import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+//import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RedirectToSignIn, SignedIn, SignedOut, useUser, UserButton } from "@clerk/nextjs";
 import { CardSpotlightDemo } from "@/components/ui/archivnet-card";
@@ -10,8 +10,8 @@ import axios from "axios";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
-import { Web3Payment } from "@/utils/Web3Payment";
-import { MeteorsDemo } from "@/utils/Meteors";
+//import { Web3Payment } from "@/utils/Web3Payment";
+//import { MeteorsDemo } from "@/utils/Meteors";
 
 const SubscriptionPlans = [
     {
