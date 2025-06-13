@@ -48,7 +48,6 @@ export default function AboutPage() {
                             <li><a href="https://github.com/Itz-Agasta" className='text-[#dfdcff] font-bold'>Itz-Agasta</a> &#8208; Full Stack Sorcerer & Infra Whisperer <br />Knows so much about code, cloud, and containers that we&apos;re 90% sure they&apos;re secretly a distributed system in human form.</li>
                             <li><a href="https://github.com/y4sh-codes" className='text-[#dfdcff] font-bold'>y4sh-codes</a> &#8208; The Minimalist Coder <br />Doesn&apos;t overthink, doesn&apos;t overbuild — just gets things done with clean code, calm focus, and zero drama.</li>
                             <li><a href="https://github.com/ZotacMaster" className='text-[#dfdcff] font-bold'>zotac-master</a> &#8208; The Underdog Hacker <br />Constantly second-guesses his code, yet keeps delivering in ways that make us say, “Wait… that actually works?!</li>
-
                         </ul>
                     </section>
                 </div>

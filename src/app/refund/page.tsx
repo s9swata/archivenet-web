@@ -1,4 +1,4 @@
-export function Refund() {
+export default function Refund() {
     return (
         <div className="w-full flex flex-col justify-center items-center text-white mt-20">
             <h1 className="text-3xl font-bold text-center">Return And Cancellation Policy</h1>
@@ -6,5 +6,3 @@ export function Refund() {
         </div>
     )
 }
-
-export default Refund;
